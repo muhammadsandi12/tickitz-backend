@@ -51,7 +51,7 @@ module.exports ={
            return res.status(200).json({success: true, message: "Login Success", token: token})
 
         }catch(err){
-
+            return res.status(200).json({success: false, message: err})
         }
 
     }
