@@ -12,7 +12,7 @@ module.exports = {
     },
     login: (email) =>{
         return new Promise((resolve, reject) =>{
-            db.query(`SELECT id, password, role  FROM users WHERE email = '${email.toLowerCase()}' `, (err,results) =>{
+            db.query(`SELECT id_users, password, role  FROM users WHERE email = '${email.toLowerCase()}' `, (err,results) =>{
                 if(err){
                     reject(err)
                 }
@@ -21,5 +21,18 @@ module.exports = {
             })
 
         })
+    },
+    checkEmail : (email) =>{
+        return new Promise((resolve, reject) =>{
+            db.query(`SELECT id_users,  role  FROM users WHERE email = '${email.toLowerCase()}' `, (err,results) =>{
+                if(err){
+                    reject(err)
+                }
+                resolve(results)
+                
+            })
+
+        })
+
     }
 }

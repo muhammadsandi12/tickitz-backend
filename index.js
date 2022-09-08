@@ -10,7 +10,7 @@ app.use(cors())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use('/upload', express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use('/api/v1', router)
 app.listen(port, () => {
   console.log(`Tickitz Backend listening on port ${port}`)
