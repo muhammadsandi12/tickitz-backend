@@ -45,7 +45,6 @@ module.exports ={
                 return res.status(400).json({success: false, message: "Error: fields must be filled"})
             }
             const results = await Auth.login(email)
-            console.log(results)
             if(!results.length){
                 return res.status(400).json({success: false, message: "Error: wrong email / password"})
             }
@@ -56,7 +55,6 @@ module.exports ={
             if(compare === false){
                 return res.status(404).json({ success: false, message: 'Error: Wrong Email / Password' })
             }
-            console.log( process.env.JWT_SECRET_KEY)
             const token = jwt.sign({user_id: results[0].id_users, role: results[0].role}, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1 day'
             })

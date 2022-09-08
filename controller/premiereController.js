@@ -13,7 +13,6 @@ module.exports = {
             return res.status(200).json({ success: true, message: "success show all users", data: { totalAllData , totalRows, totalPage,results } })
 
         }catch(err){
-            console.log(err)
             return res.status(500).json({success: false, message: err})
         }
 
@@ -24,7 +23,6 @@ module.exports = {
                 ...req.body,
                 logo_premiere: req.file.filename
             }
-            console.log(data)
 
             const results = await premiere.addPremiere(data)
             return res.status(200).json({ success: true, message: "add premiere success", data: { results } })
@@ -82,7 +80,6 @@ module.exports = {
     getById: async (req,res)=>{
         try{
             const idMovies = req.params.id
-            console.log(req.params, 'ini params id')
             const results = await movies.getById(idMovies)
             return res.status(200).json({ success: true, message: "get movies by id success", data: { results } })
 

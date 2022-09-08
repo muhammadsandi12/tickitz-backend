@@ -10,7 +10,6 @@ module.exports = {
             const results = await schedule.getScheduleByMovies(id)
             return res.status(200).json({ success: true, message: "success show all users", data: {results } })
         }catch(err){
-            console.log(err)
             return res.status(500).json({success: false, message: err})
         }
 
@@ -20,7 +19,6 @@ module.exports = {
             const data = {
                 ...req.body,
             }
-            console.log(data)
             const results = await schedule.addSchedule(data)
             return res.status(200).json({ success: true, message: "add movies success", data: { results } })
         }catch(err){
@@ -76,7 +74,6 @@ module.exports = {
     getByid: async (req,res)=>{
         try{
             const id_schedule = req.params.id
-            console.log(req.params, 'ini params id')
             const results = await movies.getById(id_schedule)
             return res.status(200).json({ success: true, message: "get movies by id success", data: { results } })
 

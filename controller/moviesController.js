@@ -11,7 +11,6 @@ module.exports = {
             limit = Number(limit) || 100
             page = Number(page)  || 1
             const offset = (page -1) * limit
-            console.log(search, 'ini search')
             const  totalAllData = await movies.countAllUser(search, sort)
             const totalPage = Math.ceil(totalAllData / limit)
             search = search? search= search.trim(): ''
@@ -23,7 +22,6 @@ module.exports = {
             
             return res.status(200).json({ success: true, message: "success show all users", data: { totalAllData , totalRows, totalPage,results } })
         }catch(err){
-            console.log(err)
             return res.status(500).json({success: false, message: err})
         }
 

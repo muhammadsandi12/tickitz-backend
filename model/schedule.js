@@ -28,7 +28,6 @@ module.exports = {
                             
                             id.map((item) => {arr.push({id: item})})
                             x = time.map((item, index) => ({...arr[index], time: item}) )
-                            console.log(x)
                             resolve(
                                 results,
                                 results[index].idtime=id,

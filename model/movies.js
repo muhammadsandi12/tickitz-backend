@@ -4,11 +4,8 @@ const db = require("../helper/db_connections")
 module.exports = {
     getAllMovies : (search, sort, offset, limit, month, upcoming) =>{
         return new Promise ((resolve, reject) =>{
-            console.log(month,'ini month')
-            console.log(search)
             const sql = ` SELECT id_movies, title, categories ,cover, release_date, director, description, casts FROM movies ${search? `WHERE title LIKE '%${search}%'`:search && month ? `WHERE title LIKE '%${search}%' AND MONTH(release_date) = MONTH('${month}')`:' WHERE release_date > CURRENT_DATE()'} ${month?`AND MONTH(release_date) = MONTH('${month}')`:''}  ${upcoming ? `AND MONTH(release_date) > MONTH("${upcoming}")`:''}  ORDER BY release_date ${sort} ${limit ? `LIMIT ${limit} OFFSET ${offset}` : ''}` 
             db.query(sql, (err,results) =>{
-                console.log(sql)
                 if(err){
                     reject(err)
                 }    
@@ -41,7 +38,6 @@ module.exports = {
     },
     getById: (idMovies) =>{
         return new Promise((resolve, reject) =>{
-            console.log(idMovies, 'ini id movies')
             const sql = `SELECT  * FROM movies where id_movies = ${idMovies} `
             db.query(sql, (err,results) =>{
                 if(err) reject(err)

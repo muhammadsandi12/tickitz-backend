@@ -31,7 +31,6 @@ module.exports ={
                     success: false, message: `Error: Data by ${userId} not found!`, data: []
                 })
             }
-            console.log(checkData[0])
             if(req.decodeToken.user_id !== checkData[0].id_users){
                 return res.status(404).json({
                     success: false, message: `Error: Sorry, access is not allowed!`, data: []
@@ -56,7 +55,6 @@ module.exports ={
            }
            return res.status(200).json({ success: true, message: 'Success update data', data: results })
         }catch(err){
-            console.log(err)
             return res.status(500).json({ success: false, message: `Error: Something went wrong!` })
         }
 
