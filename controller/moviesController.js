@@ -28,8 +28,20 @@ module.exports = {
     },
     add: async (req,res) =>{
         try{
+            const {title, categories, release_date, hour, minute, director, description, casts, cover} = req.body
+
+            if(!title||!categories ||!release_date ||!hour ||!minute ||!director ||!description ||!casts ||!req.file  ){
+                return res.status(400).json({success: false, message: "Error : fields must be filled"} )
+            }
+            const duration = `${hour} jam ${minute} minute `
             const data = {
-                ...req.body,
+                title,
+                categories,
+                release_date,
+                duration,
+                director,
+                description,
+                casts,
                 cover: req.file.filename
             }
             const results = await movies.addMovies(data)
@@ -66,7 +78,7 @@ module.exports = {
         try{
             const {id} = req.params
             const checkData = await movies.getById(id)
-            if(!checkData[0].length){
+            if(!checkData[0]){
                 return res.status(404).json({
                     success: false, message: `Error: Data by movies ${id} not found!`, data: []
                 })
