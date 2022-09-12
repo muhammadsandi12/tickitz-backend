@@ -24,7 +24,8 @@ module.exports ={
     update: async (req,res) =>{
         try{
             const userId = req.decodeToken.user_id
-           
+            console.log(req.body, 'ini req body 123')
+            console.log(req.file, 'ini req file oi')
             const checkData = await Users.getUserByid(userId)
             if (!checkData.length) {
                 return res.status(404).json({
@@ -36,6 +37,7 @@ module.exports ={
                     success: false, message: `Error: Sorry, access is not allowed!`, data: []
                 })
             }
+           
             let profile_image = req.file ? req.file.filename : checkData[0].profile_image
            let setData ={
             ...req.body,
@@ -44,9 +46,8 @@ module.exports ={
 
            const results = await Users.update(userId, setData);
            if (req.file) {
-               if (checkData[0].userImage != 'default-profile.jpg') {
-
-                   fs.unlink(`./uploads/${checkData[0].userImage}`, function (err) {
+               if (checkData[0].userImage !== 'default-profile.jpg') {
+                   fs.unlink(`./uploads/${checkData[0].profile_image}`, function (err) {
                        if (err) {
                            console.log(err)
                        }
