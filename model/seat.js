@@ -12,7 +12,7 @@ module.exports ={
     },
     checkSeat: (idSchedule, idTime) => {
         return new Promise((resolve, reject) =>{
-            db.query(`SELECT seat.id_seat, seat.row, GROUP_CONCAT(seat.row_seat, seat.number_seat) AS number_seat, seat_booked.status FROM seat_booked JOIN seat ON seat_booked.id_seat = seat.id_seat WHERE seat_booked.id_schedule =${idSchedule} AND seat_booked.id_time=${idTime} GROUP BY id_seat; `, (err,results) =>{
+            db.query(`SELECT seat.id_seat, seat.row, GROUP_CONCAT(seat.row, seat.number_seat) AS number_seat, seat_booked.status FROM seat_booked JOIN seat ON seat_booked.id_seat = seat.id_seat WHERE seat_booked.id_schedule =${idSchedule} AND seat_booked.id_time=${idTime} GROUP BY id_seat; `, (err,results) =>{
                 if(err){
                     reject(err)
                 }

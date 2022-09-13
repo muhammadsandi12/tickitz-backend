@@ -20,6 +20,7 @@ module.exports ={
                 success: true, message: `Success get seat!`, data: dataSeat
             })
         }catch(err){
+            console.log(err)
             return res.status(500).json({ success: false, message: `Error: Something went wrong!` })
         }
    },
