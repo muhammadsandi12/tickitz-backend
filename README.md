@@ -95,6 +95,13 @@ npm start
 | ----------- | :---------: | ----------: |
 | admin | admin@gmail.com | 11111111 |
 
+3.s
+| Header k-1 | Header k-2 | Header k-3 |
+| ----------- | :---------: | ----------: |
+| Isi 1 - 1 | Isi 2 - 1 | Isi 3 - 1 |
+| Isi 1 - 2 | Isi 2 - 2 | Isi 3 - 2 |
+| Isi 1 - 3 | Isi 2 - 3 | Isi 3 - 3 |
+
 <!-- Contributors -->
 
 ## Contributors
