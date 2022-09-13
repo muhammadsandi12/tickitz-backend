@@ -53,7 +53,7 @@ Before installing, you must be install [nodejs](https://nodejs.org) [npm](https:
 
 ```sh
 git clone https://github.com/muhammadsandi12/tickitz-backend.git
-
+```
 2. Install npm package
 
 ```sh
