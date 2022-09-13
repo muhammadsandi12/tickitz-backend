@@ -93,7 +93,7 @@ npm start
 ### account example role admin
 | Account role  | email | password |
 | ----------- | :---------: | ----------: |
-| admin | admin@gmail.com | 11111111 |
+| admin | admin@gmail.com | 12345678 |
 
 
 <!-- Contributors -->
