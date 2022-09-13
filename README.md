@@ -100,7 +100,7 @@ npm start
 
 ## Contributors
 
-- [M Sandi Maulana Y PM](https://github.com/muhammadsandi12)
+- [M Sandi Maulana Y ](https://github.com/muhammadsandi12)
 
 
 
