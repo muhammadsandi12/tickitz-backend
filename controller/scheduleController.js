@@ -20,7 +20,7 @@ module.exports = {
                 ...req.body,
             }
             const results = await schedule.addSchedule(data)
-            return res.status(200).json({ success: true, message: "add movies success", data: { results } })
+            return res.status(200).json({ success: true, message: "add schedule success", data: { results } })
         }catch(err){
             return res.status(500).json({success: false, message: err})
         }
@@ -44,7 +44,7 @@ module.exports = {
                     })
                 }
             }
-            return res.status(200).json({ success: true, message: "update movies success", data: { results } })
+            return res.status(200).json({ success: true, message: "update schedule success", data: { results } })
         }catch(err){
             return res.status(500).json({success: false, message: err})
         }
@@ -55,7 +55,7 @@ module.exports = {
             const checkData = await movies.getById(id)
             if(!checkData[0].length){
                 return res.status(404).json({
-                    success: false, message: `Error: Data by movies ${id} not found!`, data: []
+                    success: false, message: `Error: Data by schedule ${id} not found!`, data: []
                 })
             }
             const results = await movies.remove(id)
@@ -66,7 +66,7 @@ module.exports = {
                     }
                 })
             }
-            return res.status(200).json({ success: true, message: "delete movies success", data: { results } })
+            return res.status(200).json({ success: true, message: "delete schedule success", data: { results } })
         }catch(err){
             return res.status(500).json({success: false, message: err})
         }
