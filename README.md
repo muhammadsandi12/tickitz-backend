@@ -35,7 +35,8 @@ some technology used in this project.
 
 [Postman](https://documenter.getpostman.com/view/21564581/UzBtkNs4)
 
-
+### Link Deploy
+<a>https://tikitz-porfrolio.herokuapp.com/</a> 
 <!-- GETTING STARTED -->
 
 ## Getting Started
