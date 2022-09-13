@@ -58,6 +58,8 @@ git clone https://github.com/muhammadsandi12/tickitz-backend.git
 
 ```sh
 cd hire-job
+```
+```sh
 npm install
 ```
 
