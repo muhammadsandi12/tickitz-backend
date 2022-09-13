@@ -90,6 +90,10 @@ ROLE_USER = 'yourroleuserfromyourdb'
 ```sh
 npm start
 ```
+2. account example
+| Account role | email | password |
+| ----------- | :---------: | ----------: |
+| admin | admin@gmail.com | 11111111 |
 
 <!-- Contributors -->
 
