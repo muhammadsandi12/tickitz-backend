@@ -9,8 +9,8 @@ module.exports = {
                 if (err) {
                     reject(err)
                 }
-                if (!results.length) {
-                    resolve([])
+                if (!results) {
+                    return 0
                 }
                 else{
                     results.map((item, index) => {
@@ -18,8 +18,6 @@ module.exports = {
                             return resolve([])
                         }
                         else{
-                            
-                            
                             time = item.time.split(',')
                             id = item.idtime.split(',')
 
