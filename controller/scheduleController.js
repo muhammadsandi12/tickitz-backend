@@ -7,7 +7,8 @@ module.exports = {
     getScheduleByMovies: async(req,res) =>{
         try{      
            const {id} = req.params
-            const results = await schedule.getScheduleByMovies(id)
+           const {location} = req.query
+           const results = await schedule.getScheduleByMovies(id, location)
             return res.status(200).json({ success: true, message: "success show all users", data: {results } })
         }catch(err){
             return res.status(500).json({success: false, message: err})
