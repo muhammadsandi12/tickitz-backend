@@ -10,6 +10,9 @@ module.exports = {
                 if (err) {
                     reject(err)
                 }
+                if(!results){
+                    resolve([])
+                }
                 if (!results.length) {
                     resolve([])
                 }
