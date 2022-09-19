@@ -4,40 +4,19 @@ module.exports = {
     getScheduleByMovies: (id,location) => {
         return new Promise((resolve, reject) => {
             console.log(location, 'ini locaion')            
-            const sql = `SELECT movies.title, schedule.id_schedule,premiere.logo_premiere,premiere.name_premiere,premiere_list.address, schedule.price, schedule.date_start, schedule.date_end,  location.location_name,GROUP_CONCAT( time.id) AS idtime, GROUP_CONCAT( time.time) AS time FROM schedule JOIN movies ON schedule.id_movies = movies.id_movies JOIN premiere_list ON schedule.id_premiereList = premiere_list.id_premiereList JOIN premiere ON premiere_list.id_premiere = premiere.id_premiere JOIN location ON premiere_list.id_location = location.id_location JOIN schedule_time ON schedule.id_schedule = schedule_time.id_schedule LEFT JOIN time ON schedule_time.id_time = time.id WHERE schedule.id_movies =${id} ${location ? `AND location.location_name ='${location}'`:''} GROUP BY premiere.logo_premiere`
+            // const sql = `SELECT movies.title, schedule.id_schedule,premiere.logo_premiere,premiere.name_premiere,premiere_list.address, schedule.price, schedule.date_start, schedule.date_end,  location.location_name,GROUP_CONCAT( time.id) AS idtime, GROUP_CONCAT( time.time) AS time FROM schedule JOIN movies ON schedule.id_movies = movies.id_movies JOIN premiere_list ON schedule.id_premiereList = premiere_list.id_premiereList JOIN premiere ON premiere_list.id_premiere = premiere.id_premiere JOIN location ON premiere_list.id_location = location.id_location JOIN schedule_time ON schedule.id_schedule = schedule_time.id_schedule LEFT JOIN time ON schedule_time.id_time = time.id WHERE schedule.id_movies =${id} ${location ? `AND location.location_name ='${location}'`:''} GROUP BY premiere.logo_premiere`
+            const sql = `SELECT schedule.id_schedule, schedule.price, premiere.logo_premiere, premiere.name_premiere, premiere_list.address, schedule.date_start, schedule.date_end, location.location_name from schedule JOIN premiere_list ON schedule.id_premiereList = premiere_list.id_premiereList JOIN premiere ON premiere_list.id_premiere = premiere.id_premiere JOIN location ON premiere_list.id_location = location.id_location WHERE schedule.id_movies =${id} ${location ? `AND location.location_name ='${location}'`:''}  `
             db.query(sql, (err, results) => {
-             console.log(sql)
+            //  console.log(sql)
+             console.log(results)
                 if (err) {
                     reject(err)
                 }
-                if(!results){
-                    resolve([])
-                }
+               
                 if (!results.length) {
                     resolve([])
-                }
-                else{
-                    results.map((item, index) => {
-                        if(item.time === null){
-                            return resolve([])
-                        }
-                        else{
-                            time = item.time.split(',')
-                            id = item.idtime.split(',')
-
-                            let arr = []
-                            data = {id: '', item: ''}
-                            
-                            id.map((item) => {arr.push({id: item})})
-                            x = time.map((item, index) => ({...arr[index], time: item}) )
-                            resolve(
-                                results,
-                                results[index].idtime=id,
-                                results[index].time=x
-                            )
-                            
-                        }
-                    })
+                }else{
+                    resolve(results)
 
                 }
                 
